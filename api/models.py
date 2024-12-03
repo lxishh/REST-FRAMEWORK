@@ -1,7 +1,5 @@
 from django.db import models
-from django.forms import ValidationError
-
-# Create your models here.
+from django.core.exceptions import ValidationError
 
 
 class Alumno(models.Model):
@@ -11,7 +9,7 @@ class Alumno(models.Model):
     telefono = models.CharField(max_length=9)
     edad = models.PositiveIntegerField()
     # Relación con curso a través de la tabla intermedia Matricula
-    cursos = models.ManyToManyField("Curso") 
+    cursos = models.ManyToManyField("Curso", through='Matricula') 
 
     def datos_alumno(self):
         return "{}, {}".format(self.nombre, self.dni)
@@ -28,14 +26,37 @@ class Curso(models.Model):
     fecha_inicio = models.DateField()
     fecha_fin = models.DateField()
     seccion = models.CharField(max_length=20)  # antes numero
-
-    def clean(self):
-        super().clean()
-        if self.fecha_inicio > self.fecha_fin:
-            raise ValidationError("La fecha de inicio no puede ser después de la fecha de termino.")
+    profesor = models.ForeignKey('Profesor', on_delete=models.SET_NULL, null=True, blank=True)
 
     def datos_curso(self):
         return "{}, {}".format(self.nombre, self.codigo)
 
     def __str__(self):
         return self.datos_curso()
+
+class Profesor(models.Model):
+    dni = models.CharField(max_length=10, unique=True)
+    nombre = models.CharField(max_length=30)
+    direccion = models.CharField(max_length=50)
+    telefono = models.CharField(max_length=9)
+    
+    def datos_profesor(self):
+        return "{}, {}".format(self.nombre, self.dni)
+    
+    def __str__(self):
+        return self.datos_profesor()
+    
+    class Meta:
+        verbose_name = 'Profesor'
+        verbose_name_plural = 'Profesores'
+        db_table = 'profesor'
+        ordering = ['nombre']
+
+
+class Matricula(models.Model):
+    alumno = models.ForeignKey(Alumno, on_delete=models.CASCADE)
+    curso = models.ForeignKey(Curso, on_delete=models.CASCADE)
+    fecha_matricula = models.DateField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.alumno} matriculado en {self.curso} el {self.fecha_matricula}"

@@ -1,7 +1,14 @@
 import { AlumnoList } from "../components/AlumnoList";
+import { NavAlumno } from "../components/NavAlumno";
 
 export function AlumnosPage() {
-  return <AlumnoList />;
+  return (
+    <>
+      <NavAlumno />
+      <AlumnoList />
+    </>
+  )
 }
+
 
 export default AlumnosPage;

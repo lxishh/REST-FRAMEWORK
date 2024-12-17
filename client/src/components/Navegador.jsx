@@ -1,14 +1,12 @@
 import { Link } from "react-router-dom";
+import { AlumnoList } from "./AlumnoList";
 
 export const Navegador = () => {
   return (
-    <div className="flex justify-between py-3">
-      <Link to={"/alumnos"}>
-        <h1 className="font-bold text-3xl mb-4">Alumnos</h1>
+    <div className="flex justify-center mt-4">
+      <Link to={"../"}>
+        <h1 className="font-bold text-3xl mb-2">Inicio</h1>
       </Link>
-      <button className="bg-indigo-500 px-3 py-2 rounded-lg">
-        <Link to={"/crear-alumno"}>Crear Alumno</Link>
-      </button>
     </div>
   );
 };

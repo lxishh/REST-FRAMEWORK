@@ -55,17 +55,17 @@ export function AlumnosFormPage() {
           className='bg-zinc-700 p-3 rounded-lg block w-full mb-3' />
         {errors.dni?.type === "required" && <span>RUT es obligatorio</span>}
         {errors.dni?.type === "pattern" && <span>RUT debe tener un formato válido</span>}
-        <input type="text" placeholder="Ingrese nombre" {...register("nombre", { required: true })}
+        <input type="text" placeholder="Nombre" {...register("nombre", { required: true })}
           className='bg-zinc-700 p-3 rounded-lg block w-full mb-3' />
-        <input type="text" placeholder="direccion" {...register("direccion", { required: true })}
+        <input type="text" placeholder="Direccion (ej: Ramon Carnicer #2024)" {...register("direccion", { required: true })}
           className='bg-zinc-700 p-3 rounded-lg block w-full mb-3' />
-        <input type="text" placeholder="telefono" {...register("telefono", {
+        <input type="text" placeholder="Teléfono (ej: 920203422)" {...register("telefono", {
           required: true, maxLength: 9,
           minLength: 9,
         })}
           className='bg-zinc-700 p-3 rounded-lg block w-full mb-3' />
         {errors.telefono && <span>Teléfono debe tener 9 dígitos</span>}
-        <input type="number" placeholder="edad" {...register("edad", { required: true, min: 1 })}
+        <input type="number" placeholder="Edad" {...register("edad", { required: true, min: 1 })}
           className='bg-zinc-700 p-3 rounded-lg block w-full mb-3' />
         <button className='bg-indigo-500 p-3 rounded-lg block w-full mt-3'>Guardar</button>
       </form>

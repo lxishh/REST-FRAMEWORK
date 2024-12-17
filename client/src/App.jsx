@@ -3,6 +3,7 @@ import { AlumnosPage } from "./pages/AlumnosPage";
 import { AlumnosFormPage } from "./pages/AlumnosFormPage";
 import { Navegador } from "./components/Navegador";
 import { Toaster } from "react-hot-toast";
+import { InicioPage } from "./pages/InicioPage";
 
 function App() {
   return (
@@ -10,7 +11,7 @@ function App() {
       <div className="container mx-auto">
         <Navegador />
         <Routes>
-          <Route path="/" element={<Navigate to={"/alumnos"} />}></Route>
+          <Route path="/" element={<InicioPage />}></Route>
           <Route path="/alumnos" element={<AlumnosPage />} />
           <Route path="/crear-alumno" element={<AlumnosFormPage />} />
           <Route path="/alumnos/:id" element={<AlumnosFormPage />} />

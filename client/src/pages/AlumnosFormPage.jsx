@@ -3,6 +3,7 @@ import { get, useForm } from 'react-hook-form'
 import { crearAlumno, eliminarAlumno, actualizarAlumno, getAlumno } from "../api/alumnos.api";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-hot-toast";
+import { FlechaVolver } from "../components/FlechaVolver"; // Importamos el componente FlechaVolver
 
 export function AlumnosFormPage() {
 
@@ -49,10 +50,11 @@ export function AlumnosFormPage() {
   }, [])
 
   return (
-    <div className='max-w-xl mx-auto'>
+    <div className='max-w-xl mx-auto mt-5'>
+      <FlechaVolver />
       <form onSubmit={onSubmit}>
         <input type="text" placeholder="RUT (ej: 21322796-3)" {...register("dni", { required: true, pattern: /^[0-9]{7,8}-[0-9Kk]$/ })}
-          className='bg-zinc-700 p-3 rounded-lg block w-full mb-3' />
+          className='bg-zinc-700 p-3 rounded-lg block w-full mb-3 mt-5' />
         {errors.dni?.type === "required" && <span>RUT es obligatorio</span>}
         {errors.dni?.type === "pattern" && <span>RUT debe tener un formato válido</span>}
         <input type="text" placeholder="Nombre" {...register("nombre", { required: true })}

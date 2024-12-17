@@ -13,6 +13,9 @@ const OpcionesCard = () => {
             <Link to={'/alumnos'}>
                 <button className='bg-indigo-500 p-3 rounded-lg block w-full mt-3'>Alumnos</button>
             </Link>
+            <Link to={'/matriculas'}>
+                <button className='bg-sky-500 p-3 rounded-lg block w-full mt-3'>Matriculas</button>
+            </Link>
 
 
         </div >

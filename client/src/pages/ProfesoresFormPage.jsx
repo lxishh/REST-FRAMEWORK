@@ -3,6 +3,7 @@ import { get, useForm } from 'react-hook-form'
 import { crearProfesor, eliminarProfesor, actualizarProfesor, getProfesor } from "../api/profesores.api";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-hot-toast";
+import { FlechaVolver } from "../components/FlechaVolver"; // Importamos el componente FlechaVolver
 
 export function ProfesoresFormPage() {
 
@@ -49,8 +50,9 @@ export function ProfesoresFormPage() {
     }, [])
 
     return (
-        <div className='max-w-xl mx-auto'>
-            <form onSubmit={onSubmit}>
+        <div className='max-w-xl mx-auto mt-5'>
+            <FlechaVolver />
+            <form onSubmit={onSubmit} className='mt-5'>
                 <input type="text" placeholder="RUT (ej: 12836841-3)" {...register("dni", { required: true, pattern: /^[0-9]{7,8}-[0-9Kk]$/ })}
                     className='bg-zinc-700 p-3 rounded-lg block w-full mb-3' />
                 {errors.dni?.type === "required" && <span>RUT es obligatorio</span>}
@@ -68,24 +70,26 @@ export function ProfesoresFormPage() {
                 <button className='bg-indigo-500 p-3 rounded-lg block w-full mt-3'>Guardar</button>
             </form>
 
-            {params.id && <button
-                className='bg-red-500 p-3 rounded-lg w-full mt-3'
-                onClick={async () => {
-                    const respuesta = window.confirm('¿Seguro que deseas eliminar?')
-                    if (respuesta) {
-                        await eliminarProfesor(params.id)
-                        toast.success('Profesor Eliminado', {
-                            position: 'bottom-right',
-                            style: {
-                                background: "#101010",
-                                color: '#fff'
-                            }
-                        })
-                        navigate("/profesores")
-                    }
-                }}>
-                Eliminar
-            </button>}
-        </div>
+            {
+                params.id && <button
+                    className='bg-red-500 p-3 rounded-lg w-full mt-3'
+                    onClick={async () => {
+                        const respuesta = window.confirm('¿Seguro que deseas eliminar?')
+                        if (respuesta) {
+                            await eliminarProfesor(params.id)
+                            toast.success('Profesor Eliminado', {
+                                position: 'bottom-right',
+                                style: {
+                                    background: "#101010",
+                                    color: '#fff'
+                                }
+                            })
+                            navigate("/profesores")
+                        }
+                    }}>
+                    Eliminar
+                </button>
+            }
+        </div >
     )
 }

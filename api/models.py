@@ -11,11 +11,8 @@ class Alumno(models.Model):
     # Relación con curso a través de la tabla intermedia Matricula
     cursos = models.ManyToManyField("Curso", through='Matricula') 
 
-    def datos_alumno(self):
-        return "{}, {}".format(self.nombre, self.dni)
-
     def __str__(self):
-        return self.datos_alumno()
+        return self.nombre
 
 
 class Curso(models.Model):
@@ -28,11 +25,8 @@ class Curso(models.Model):
     seccion = models.CharField(max_length=20)  # antes numero
     profesor = models.ForeignKey('Profesor', on_delete=models.SET_NULL, null=True, blank=True)
 
-    def datos_curso(self):
-        return "{}, {}".format(self.nombre, self.codigo)
-
     def __str__(self):
-        return self.datos_curso()
+        return self.nombre
 
 class Profesor(models.Model):
     dni = models.CharField(max_length=10, unique=True)

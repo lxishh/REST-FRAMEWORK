@@ -4,6 +4,7 @@ import { crearCurso, eliminarCurso, actualizarCurso, getCurso } from "../api/cur
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import { getAllProfesores } from "../api/profesores.api";
+import { FlechaVolver } from "../components/FlechaVolver"; // Importamos el componente FlechaVolver
 
 export function CursosFormPage() {
 
@@ -59,8 +60,9 @@ export function CursosFormPage() {
     }, []);
 
     return (
-        <div className='max-w-xl mx-auto'>
-            <form onSubmit={onSubmit}>
+        <div className='max-w-xl mx-auto mt-5'>
+            <FlechaVolver />
+            <form onSubmit={onSubmit} className='mt-5'>
                 <input
                     type="text"
                     placeholder="Código"
@@ -84,16 +86,27 @@ export function CursosFormPage() {
                     {...register("descripcion", { required: true })}
                     className='bg-zinc-700 p-3 rounded-lg block w-full mb-3'
                 ></textarea>
-                <input
-                    type="date"
-                    {...register("fecha_inicio", { required: true })}
-                    className='bg-zinc-700 p-3 rounded-lg block w-full mb-3'
-                />
-                <input
-                    type="date"
-                    {...register("fecha_fin", { required: true })}
-                    className='bg-zinc-700 p-3 rounded-lg block w-full mb-3'
-                />
+
+                <div className="mb-3">
+                    <label htmlFor="fecha_inicio" className="block text-sm text-gray-400">Fecha de inicio</label>
+                    <input
+                        id="fecha_inicio"
+                        type="date"
+                        {...register("fecha_inicio", { required: true })}
+                        className="bg-zinc-700 p-3 rounded-lg block w-full"
+                    />
+                </div>
+
+                <div className="mb-3">
+                    <label htmlFor="fecha_fin" className="block text-sm text-gray-400">Fecha de termino</label>
+                    <input
+                        id="fecha_fin"
+                        type="date"
+                        {...register("fecha_fin", { required: true })}
+                        className="bg-zinc-700 p-3 rounded-lg block w-full"
+                    />
+                </div>
+
                 <input
                     type="text"
                     placeholder="Sección"

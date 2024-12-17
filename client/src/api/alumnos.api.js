@@ -6,4 +6,11 @@ const alumnoApi = axios.create({
 
 export const getAllAlumnos = () =>  alumnoApi.get("/");
 
+// hay que usar `${comillas inversas}` para usar `${template literals}` en JavaScript
+export const getAlumno = (id) => alumnoApi.get(`/${id}/`)
+
 export const crearAlumno = (alumno) => alumnoApi.post("/", alumno);
+
+export const eliminarAlumno = (id) => alumnoApi.delete('/' + id);
+
+export const actualizarAlumno = (id, alumno) => alumnoApi.put('/' + id + '/', alumno)

@@ -13,9 +13,11 @@ export function AlumnoList() {
         loadAlumnos();
     }, []);
 
-    return <div>
-        {alumnos.map(alumno => (
-            <AlumnoCard key={alumno.id} alumno={alumno} />
-        ))}
-    </div>
+    return (
+        <div className="grid grid-cols-2 gap-3">
+            {alumnos.map(alumno => (
+                <AlumnoCard key={alumno.id} alumno={alumno} />
+            ))}
+        </div>
+    );
 }

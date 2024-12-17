@@ -10,7 +10,9 @@ const OpcionesCard = () => {
             <Link to={'/profesores'}>
                 <button className='bg-indigo-500 p-3 rounded-lg block w-full mt-3'>Profesores</button>
             </Link>
-            <button className='bg-indigo-500 p-3 rounded-lg block w-full mt-3'>Cursos</button>
+            <Link to={'/cursos'}>
+                <button className='bg-indigo-500 p-3 rounded-lg block w-full mt-3'>Cursos</button>
+            </Link>
         </div >
     )
 }

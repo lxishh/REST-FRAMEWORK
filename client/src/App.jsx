@@ -23,6 +23,7 @@ function App() {
           {/* PROFESORES */}
           <Route path="/profesores" element={<ProfesoresPage />} />
           <Route path="/crear-profesor" element={<ProfesoresFormPage />} />
+          <Route path="/profesores/:id" element={<ProfesoresFormPage />} />
         </Routes>
         <Toaster />
       </div>

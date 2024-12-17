@@ -5,7 +5,7 @@ charset-normalizer==3.4.0
 coreapi==2.3.3
 coreschema==0.0.4
 Django==3.2
-django-bootstrap-v5==1.0.11
+django-cors-headers==3.13.0
 django-widget-tweaks==1.5.0
 djangorestframework==3.12.4
 idna==3.10
@@ -20,5 +20,6 @@ pytz==2024.2
 requests==2.32.3
 soupsieve==2.6
 sqlparse==0.5.1
+tzdata==2024.2
 uritemplate==4.1.1
 urllib3==2.2.3

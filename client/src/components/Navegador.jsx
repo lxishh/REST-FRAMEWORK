@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { AlumnoList } from "./AlumnoList";
 
 export const Navegador = () => {
   return (

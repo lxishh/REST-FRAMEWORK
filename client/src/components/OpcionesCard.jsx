@@ -7,10 +7,12 @@ const OpcionesCard = () => {
             <Link to={'/alumnos'}>
                 <button className='bg-indigo-500 p-3 rounded-lg block w-full mt-3'>Alumnos</button>
             </Link>
-            <button className='bg-indigo-500 p-3 rounded-lg block w-full mt-3'>Profesores</button>
+            <Link to={'/profesores'}>
+                <button className='bg-indigo-500 p-3 rounded-lg block w-full mt-3'>Profesores</button>
+            </Link>
             <button className='bg-indigo-500 p-3 rounded-lg block w-full mt-3'>Cursos</button>
         </div >
     )
 }
 
-export default OpcionesCard
+export default OpcionesCard;
